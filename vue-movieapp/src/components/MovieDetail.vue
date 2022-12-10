@@ -6,56 +6,59 @@ const { movieDetail, loadMovieDetail } = getMovieDetail();
 const prop = defineProps({
   clickId: String,
 });
-const apiData = ref("");
+
+const movie = ref("");
+
 watch(
   () => prop.clickId,
   async () => {
-    apiData.value = "";
+    movie.value = "";
     loadMovieDetail(prop.clickId);
   }
 );
+
 watch(
   () => movieDetail.value,
   () => {
-    apiData.value = movieDetail.value;
+    movie.value = movieDetail.value;
   }
 );
 </script>
 
 <template>
-  <div v-if="apiData?.Response === 'True'">
+  <div v-if="movie?.Response === 'True'">
     <div>
       <div>
-        <img :src="apiData.Poster" />
+        <img :src="movie.Poster" />
       </div>
       <div>
-        <h1>{{ apiData.Title }}</h1>
-        <div>{{ apiData.Released }}, {{ apiData.Country }}</div>
+        <h1>{{ movie.Title }}</h1>
+        <div>{{ movie.Released }}, {{ movie.Country }}</div>
         <div>
           <div><b>Genre</b></div>
-          <div>{{ apiData.Genre }}</div>
+          <div>{{ movie.Genre }}</div>
         </div>
         <div>
           <div><b>Plot</b></div>
           <p>
-            {{ apiData.Plot }}
+            {{ movie.Plot }}
           </p>
         </div>
         <div>
           <div><b>Ratings</b></div>
           <div>
-            <div v-for="rating in apiData.Ratings" :key="rating.Source">
+            <div v-for="rating in movie.Ratings" :key="rating.Source">
               {{ rating.Source }} : {{ rating.Value }}
             </div>
           </div>
         </div>
         <div>
           <div><b>Director</b></div>
-          <div>{{ apiData.Director }}</div>
+          <div>{{ movie.Director }}</div>
         </div>
         <div>
           <div><b>Actors</b></div>
-          <div>{{ apiData.Actors }}</div>
+          <div>{{ movie.Actors }}</div>
         </div>
       </div>
     </div>
