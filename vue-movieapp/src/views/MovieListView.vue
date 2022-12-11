@@ -24,7 +24,7 @@ const onClickMovieDetail = (id, e) => {
 
 <template>
   <div v-if="errorMovieList">{{ errorMovieList }}</div>
-  <div v-if="movieList.Response === 'True'" class="min-h-screen">
+  <div v-if="movieList.Response === 'True'">
     <div class="grid grid-cols-2">
       <MovieListItem
         v-for="movie in movieList.Search"
@@ -35,15 +35,8 @@ const onClickMovieDetail = (id, e) => {
       />
     </div>
   </div>
-  <div
-    v-else-if="movieList.Response === 'False'"
-    class="flex justify-center mt-20 h-screen"
-  >
-    검색 결과가 없습니다
-  </div>
-  <div v-else class="flex justify-center mt-20 h-screen">
-    <progress class="progress w-56"></progress>
-  </div>
+  <div v-else-if="movieList.Response === 'False'">검색 결과가 없습니다</div>
+  <div v-else>loading...</div>
   <input type="checkbox" id="my-modal-4" class="modal-toggle" />
   <label for="my-modal-4" class="modal cursor-pointer">
     <label class="modal-box relative" for="">
