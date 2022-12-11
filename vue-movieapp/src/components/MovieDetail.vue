@@ -64,5 +64,7 @@ watch(
     </div>
   </div>
   <div v-else-if="movieDetail?.Response === 'False'">결과가 없습니다</div>
-  <div v-else>loading...</div>
+  <div v-else class="flex justify-center mt-20 h-screen">
+    <progress class="progress w-56"></progress>
+  </div>
 </template>
