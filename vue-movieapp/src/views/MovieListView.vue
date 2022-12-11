@@ -9,6 +9,7 @@ const route = useRoute();
 const { movieList, errorMovieList, loadMovieList } = getMovieList();
 const clickId = ref("null");
 loadMovieList(route.params.id);
+
 watch(
   () => route.params.id,
   async () => {
@@ -17,7 +18,6 @@ watch(
 );
 
 const onClickMovieDetail = (id, e) => {
-  console.log(e);
   clickId.value = id;
 };
 </script>
@@ -33,7 +33,6 @@ const onClickMovieDetail = (id, e) => {
         @click="onClickMovieDetail(movie.imdbID)"
         class="m-10"
       />
-      >
     </div>
   </div>
   <div v-else-if="movieList.Response === 'False'">검색 결과가 없습니다</div>

@@ -8,7 +8,7 @@ const prop = defineProps({
   <label for="my-modal-4">
     <div class="card lg:card-side bg-base-100 shadow-xl">
       <figure><img :src="movie?.Poster" alt="Album" /></figure>
-      <div class="card-body">
+      <div class="card-body bg-secondary">
         <h2 class="card-title">{{ movie?.Title }}</h2>
         <p>{{ movie?.Year }}</p>
       </div>
