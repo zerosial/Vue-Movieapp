@@ -13,7 +13,10 @@ watch(
   () => prop.clickId,
   async () => {
     movie.value = "";
-    loadMovieDetail(prop.clickId);
+    loadMovieDetail({
+      type: "Detail",
+      keyword: prop.clickId,
+    });
   }
 );
 

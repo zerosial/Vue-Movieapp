@@ -4,10 +4,17 @@ const getMovieDetail = () => {
   const errorMovieDetail = ref(null);
   const { VITE_API_END_POINT, VITE_API_KEY } = import.meta.env;
 
-  const loadMovieDetail = async (input) => {
+  const loadMovieDetail = async ({ type, keyword }) => {
+    let url;
+    if (type === "Thumbnail") {
+      url = `s=${keyword}&page=1`;
+    }
+    if (type === "Detail") {
+      url = `i=${keyword}&plot=full`;
+    }
     try {
       let res = await fetch(
-        `${VITE_API_END_POINT}?apikey=${VITE_API_KEY}&i=${input}&plot=full`
+        `${VITE_API_END_POINT}?apikey=${VITE_API_KEY}&${url}`
       );
       if (!res.ok) {
         throw Error("fail");

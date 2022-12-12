@@ -3,7 +3,9 @@ import { RouterLink, RouterView, useRouter } from "vue-router";
 const router = useRouter();
 
 const onSearch = (e) => {
-  if (!e.target[0].value) return;
+  if (!e.target[0].value) {
+    return;
+  }
   const searchKeyword = e.target[0].value;
   e.target[0].value = "";
   router.push(`/movie/${searchKeyword}`);
